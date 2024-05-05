@@ -20,4 +20,12 @@
 }
 .page_wrapper .home .homeContainer.Con_inactive {
   margin-left: 80px;
+}
+.page_wrapper .home .homeContainer .grid {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 20px;
 }/*# sourceMappingURL=Home.css.map */

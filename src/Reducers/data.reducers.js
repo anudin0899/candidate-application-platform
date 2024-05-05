@@ -1,56 +1,35 @@
-import { authConstants } from "../Actions/constant"
+import { FETCH_JOBS_FAILURE, FETCH_JOBS_REQUEST, FETCH_JOBS_SUCCESS } from "../Actions/constant";
 
-const initState = {
-    token: null,
-    user: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        profilePicture: ""
-    },
-    authenticate: false,
-    authenticating: false,
+
+const initialState = {
+    jobs: [],
     loading: false,
-    error: null,
-    message: ""
-}
+    error: null
+};
 
-export default (state = initState, action) => {
-    console.log(action, "action");
+export const jobReducer = (state = initialState, action) => {
     switch (action.type) {
-        case authConstants.LOGIN_REQUEST:
-            state = {
+        case FETCH_JOBS_REQUEST:
+            return {
                 ...state,
-                authenticating: true
-            }
-            break;
-        case authConstants.LOGIN_SUCCESS:
-            state = {
+                loading: true,
+                error: null
+            };
+        case FETCH_JOBS_SUCCESS:
+            return {
                 ...state,
-                user: action.payload.userInfo,
-                token: action.payload.token,
-                authenticate: true,
-                authenticating: false
-            }
-            break;
-        case authConstants.LOGOUT_REQUEST:
-            state = {
+                loading: false,
+                jobs: action.payload,
+                error: null
+            };
+        case FETCH_JOBS_FAILURE:
+            return {
                 ...state,
-                loading: true
-            }
-            break;
-        case authConstants.LOGOUT_SUCCESS:
-            state = {
-                ...initState
-            }
-            break;
-        case authConstants.LOGOUT_FAILURE:
-            state = {
-                ...state,
-                error: action.payload.error,
-                loading: false
-            }
-            break;
+                loading: false,
+                jobs: [],
+                error: action.payload
+            };
+        default:
+            return state;
     }
-    return state;
-}
+};

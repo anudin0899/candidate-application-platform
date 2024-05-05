@@ -1,74 +1,31 @@
-import Instance from "../Instance/axiosInstance";
-import { authConstants } from "./constant"
+import { FETCH_JOBS_FAILURE, FETCH_JOBS_REQUEST, FETCH_JOBS_SUCCESS } from "./constant"
 
-export const login = (user) => {
+
+export const fetchJobs = (limit = 10) => {
     return async (dispatch) => {
-
-        dispatch({ type: authConstants.LOGIN_REQUEST });
-        const res = await Instance.post('/admin/signin', {
-            ...user
-        })
-
-        if (res.status === 200) {
-            const { token, userInfo } = res.data;
-            localStorage.setItem("admintoken", token);
-            localStorage.setItem("adminUser", JSON.stringify(userInfo));
-            dispatch({
-                type: authConstants.LOGIN_SUCCESS,
-                payload: {
-                    token, userInfo
-                }
+        dispatch({ type: FETCH_JOBS_REQUEST });
+        try {
+            const response = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    "limit": limit,
+                    "offset": 0
+                })
             });
-        } else {
-            if (res.status === 400) {
-                dispatch({
-                    type: authConstants.LOGIN_FAILURE,
-                    payload: { error: res.data.error }
-                });
-            }
-        }
-    }
-}
-
-
-
-export const isAdminLoggedIn = () => {
-    return async (dispatch) => {
-        const admintoken = localStorage.getItem("admintoken");
-        if (admintoken) {
-            const adminUser = JSON.parse(localStorage.getItem("adminUser"));
+            const data = await response.json();
             dispatch({
-                type: authConstants.LOGIN_SUCCESS,
-                payload: {
-                    admintoken, adminUser
-                }
+                type: FETCH_JOBS_SUCCESS,
+                payload: data.jdList
             });
-        } else {
+
+        } catch (error) {
             dispatch({
-                type: authConstants.LOGIN_FAILURE,
-                payload: { error: "Failed to login" }
+                type: FETCH_JOBS_FAILURE,
+                payload: error.message
             });
         }
-    }
-}
-
-export const signout = () => {
-    return async (dispatch) => {
-        dispatch({ type: authConstants.LOGOUT_REQUEST });
-        const res = await Instance.post('/admin/signout');
-
-        if (res.status === 200) {
-            localStorage.clear();
-            dispatch({
-                type: authConstants.LOGOUT_SUCCESS
-            })
-        } else {
-            dispatch({
-                type: authConstants.LOGOUT_FAILURE,
-                payload: { error: res.data.error }
-            });
-
-        }
-
-    }
-}
+    };
+};

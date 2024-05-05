@@ -106,13 +106,14 @@
   color: #111;
   font-size: 15px;
   font-weight: 600;
+  padding: 5px 0;
   cursor: pointer;
 }
 .side-menu .main-menu .menu-item span,
 .inactive .main-menu .menu-item span {
   position: absolute;
   display: inline-block;
-  line-height: 40px;
+  line-height: 30px;
   opacity: 1;
   transition: opacity 0.2s ease-in;
 }

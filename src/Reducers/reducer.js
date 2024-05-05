@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import dataReducer from './data.reducers';
+import { jobReducer } from './data.reducers';
 
 
 const rootReducer = combineReducers({
-    data: dataReducer,
+    data: jobReducer,
 })
 
 export default rootReducer;

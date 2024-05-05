@@ -13,15 +13,7 @@ const menuItem = [
     },
     {
         name: 'Search',
-        icon: 'bi bi-pencil'
-    },
-    {
-        name: 'Cutomers',
-        icon: 'bi bi-person'
-    },
-    {
-        name: 'Category',
-        icon: 'bi bi-bag-dash'
+        icon: <AccountCircleIcon />
     },
 ]
 
@@ -38,7 +30,7 @@ const Sidebar = ({ onCollapse }) => {
 
             <div className='top-section'>
                 <div className='logo'>
-                    {inactive ? <h1>W</h1> : <h1>Weedday</h1>}
+                    {inactive ? <h1>W</h1> : <h1>Weekday</h1>}
                 </div>
                 <div className='back-arrow' onClick={() => setinactive(!inactive)}>
                     {inactive ? <ArrowForwardIosIcon className='icon' />
@@ -55,7 +47,7 @@ const Sidebar = ({ onCollapse }) => {
                     {menuItem.map((menuItems, index) => (
                         <li key={index}>
                             <div className='link menu-item'>
-                                <div className='menu-icon icon'><i className={menuItems.icon}></i></div>
+                                <div className='menu-icon icon'>{menuItems.icon}</div>
                                 <span>{menuItems.name}</span>
                             </div>
                         </li>

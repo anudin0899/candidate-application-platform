@@ -1,0 +1,182 @@
+.inactive {
+  width: 80px;
+  transition: 0.3s ease-in;
+}
+.inactive .back-arrow {
+  right: -35px;
+}
+.inactive .back-arrow .icon {
+  color: #333;
+  font-size: 12px;
+}
+.inactive .back-arrow .icon:hover {
+  color: rgb(14, 140, 224);
+}
+.inactive .main-menu .menu-item span {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+.inactive .side-menu-footer .user-info {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.side-menu {
+  width: 300px;
+  transition: 0.3s ease-out;
+}
+.side-menu .back-arrow {
+  right: 0;
+}
+.side-menu .back-arrow .icon {
+  color: #333;
+}
+.side-menu .back-arrow .icon:hover {
+  color: rgb(14, 140, 224);
+}
+
+.side-menu,
+.inactive {
+  position: fixed;
+  background: #fff;
+  height: 100%;
+  box-sizing: border-box;
+  border-right: 1px solid #ccc;
+  padding: 20px;
+}
+.side-menu .icon,
+.inactive .icon {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #333;
+}
+.side-menu .link,
+.inactive .link {
+  text-decoration: none;
+  color: #fff;
+}
+.side-menu .top-section,
+.inactive .top-section {
+  position: relative;
+}
+.side-menu .top-section .logo,
+.inactive .top-section .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  overflow: hidden;
+}
+.side-menu .top-section .logo h1,
+.inactive .top-section .logo h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+.side-menu .top-section .back-arrow,
+.inactive .top-section .back-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  padding: 6px;
+  border-radius: 100%;
+  background-color: #ccc;
+}
+.side-menu .divider,
+.inactive .divider {
+  width: 100%;
+  height: 1px;
+  border-radius: 1px;
+  background: #333;
+}
+.side-menu .main-menu,
+.inactive .main-menu {
+  margin: 5px 0;
+}
+.side-menu .main-menu .menu-item,
+.inactive .main-menu .menu-item {
+  display: block;
+  color: #111;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.side-menu .main-menu .menu-item span,
+.inactive .main-menu .menu-item span {
+  position: absolute;
+  display: inline-block;
+  line-height: 40px;
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+}
+.side-menu .main-menu .menu-item.active,
+.inactive .main-menu .menu-item.active {
+  background: #164863;
+  border-radius: 5px;
+  color: #111;
+  margin-top: 10px;
+}
+.side-menu .main-menu .menu-item.active .menu-icon,
+.inactive .main-menu .menu-item.active .menu-icon {
+  color: #111;
+}
+.side-menu .main-menu .menu-icon,
+.inactive .main-menu .menu-icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 40px;
+  color: #111;
+}
+.side-menu .main-menu .active,
+.inactive .main-menu .active {
+  max-height: 200px;
+}
+.side-menu .side-menu-footer,
+.inactive .side-menu-footer {
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.side-menu .side-menu-footer .avatar,
+.inactive .side-menu-footer .avatar {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 100%;
+  display: inline-block;
+}
+.side-menu .side-menu-footer .avatar img,
+.inactive .side-menu-footer .avatar img {
+  max-width: 100%;
+}
+.side-menu .side-menu-footer .user-info,
+.inactive .side-menu-footer .user-info {
+  display: inline-block;
+  margin: 0 10px;
+  color: #111;
+  position: absolute;
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+}
+.side-menu .side-menu-footer .user-info h5,
+.inactive .side-menu-footer .user-info h5 {
+  font-size: 15px;
+}
+.side-menu .side-menu-footer .user-info p,
+.inactive .side-menu-footer .user-info p {
+  font-size: 13px;
+}/*# sourceMappingURL=Sidebar.css.map */

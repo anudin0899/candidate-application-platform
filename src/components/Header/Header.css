@@ -1,0 +1,26 @@
+.Header {
+  height: 65px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  border-bottom: 1px solid #ccc;
+}
+.Header .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 40px;
+  gap: 10px;
+}
+.Header .wrapper .left {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  background: #fff;
+  border-radius: 5px;
+  padding: 0px;
+}
+.Header .wrapper .left h1 {
+  padding: 0 10px;
+}/*# sourceMappingURL=Header.css.map */

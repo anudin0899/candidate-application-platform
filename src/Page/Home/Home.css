@@ -28,4 +28,10 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   padding: 20px;
+}
+.page_wrapper .home .homeContainer .loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
 }/*# sourceMappingURL=Home.css.map */

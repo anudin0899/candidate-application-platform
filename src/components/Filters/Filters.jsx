@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import './Filters.css';
 import Select from "react-select";
-import { Role, Employees, Experience, Remote, Salary } from '../../Assets/Data';
+import { Role, Experience, Salary, Location } from '../../Assets/Data';
 
-const Filters = ({ ByRole, ByEmployee, ByExp, ByRemote, BySalary, ByCompany }) => {
+const Filters = ({ ByRole, ByExp, ByLocation, BySalary, ByCompany }) => {
 
     const [selectedRoles, setSelectedRoles] = useState([]);
-    const [selectedEmployees, setSelectedEmployees] = useState([]);
     const [selectedExperience, setSelectedExperience] = useState('');
-    const [selectedRemote, setSelectedRemote] = useState([]);
+    const [selectedLoaction, setSelectedLocation] = useState([]);
     const [selectedSalary, setSelectedSalary] = useState('');
     const [companyName, setCompanyName] = useState('');
 
@@ -18,19 +17,14 @@ const Filters = ({ ByRole, ByEmployee, ByExp, ByRemote, BySalary, ByCompany }) =
         ByRole({ ...ByRole, roles: selected.map(item => item.value) });
     };
 
-    const handleEmployeesChange = (selected) => {
-        setSelectedEmployees(selected);
-        ByEmployee({ ...ByEmployee, employees: selected.map(item => item.value) });
-    };
-
     const handleExperienceChange = (selected) => {
         setSelectedExperience(selected);
         ByExp({ ...ByExp, experience: selected.value });
     };
 
-    const handleRemoteChange = (selected) => {
-        setSelectedRemote(selected);
-        ByRemote({ ...ByRemote, remote: selected.map(item => item.value) });
+    const handleLocationChange = (selected) => {
+        setSelectedLocation(selected);
+        ByLocation({ ...ByLocation, location: selected.map(item => item.value) });
     };
 
     const handleSalaryChange = (selected) => {
@@ -74,15 +68,6 @@ const Filters = ({ ByRole, ByEmployee, ByExp, ByRemote, BySalary, ByCompany }) =
                     />
 
                     <Select
-                        options={Employees}
-                        value={selectedEmployees}
-                        placeholder="no.of employees"
-                        onChange={handleEmployeesChange}
-                        isMulti
-                        styles={customStyles}
-                    />
-
-                    <Select
                         options={Experience}
                         value={selectedExperience}
                         placeholder="experience"
@@ -91,10 +76,10 @@ const Filters = ({ ByRole, ByEmployee, ByExp, ByRemote, BySalary, ByCompany }) =
                     />
 
                     <Select
-                        options={Remote}
-                        value={selectedRemote}
-                        placeholder="remote"
-                        onChange={handleRemoteChange}
+                        options={Location}
+                        value={selectedLoaction}
+                        placeholder="location"
+                        onChange={handleLocationChange}
                         isMulti
                         styles={customStyles}
                     />

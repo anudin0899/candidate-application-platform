@@ -7,23 +7,25 @@ import { fetchJobs } from '../../Actions/data.action';
 import JobCard from '../../components/Card/Card';
 import InfiniteScroll from '../../components/InfiniteScroll/InfiniteScroll';
 import Filters from '../../components/Filters/Filters';
+import LoadingSpin from 'react-loading-spin';
 
 const Home = () => {
     const dispatch = useDispatch();
     const jobData = useSelector(state => state.jobdata.jobs);
+    const { loading, error } = useSelector(state => state.jobdata);
+
+    console.log(loading);
 
 
     const [inactive, setInactive] = useState(false);
     const [limit, setLimit] = useState(10);
 
     const [Roles, setRoles] = useState([]);
-    const [Employees, setEmployees] = useState([]);
     const [Experience, setExperience] = useState('');
-    const [Remote, setRemote] = useState([]);
+    const [Location, setLocation] = useState([]);
     const [Salary, setSalary] = useState('');
     const [CompanyName, setCompanyName] = useState('');
 
-    const [filteredJobs, setFilteredJobs] = useState(jobData);
 
     useEffect(() => {
         dispatch(fetchJobs());
@@ -35,24 +37,19 @@ const Home = () => {
     };
 
     const filteredJobData = jobData.filter(job => {
-       
-        const rolesArray = Array.isArray(Roles) ? Roles : [Roles];
-        const employeesArray = Array.isArray(Employees) ? Employees : [Employees];
-        const remoteArray = Array.isArray(Remote) ? Remote : [Remote];
 
+        const rolesArray = Array.isArray(Roles) ? Roles : [Roles];
+        const locationArray = Array.isArray(Location) ? Location : [Location];
 
         return (
-            (rolesArray.length === 0 || rolesArray.includes(job.jobRole.toLowerCase())) &&
-            (employeesArray.length === 0 || employeesArray.includes(job.employees.toLowerCase())) &&
-            (remoteArray.length === 0 || remoteArray.includes(job.remote.toLowerCase())) &&
-            (Experience === '' || (job.minExp <= parseInt(Experience))) &&
-            (Salary === '' || (job.minJdSalary <= parseInt(Salary))) &&
-            (CompanyName === '' || job.companyName.toLowerCase().includes(CompanyName.toLowerCase()))
+            (rolesArray.length === 0 || rolesArray[0]?.roles.includes(job?.jobRole.toLowerCase())) &&
+            (locationArray.length === 0 || locationArray[0]?.location.includes(job?.location.toLowerCase())) &&
+            (Experience === '' || (job?.minExp === parseInt(Experience?.experience))) &&
+            (Salary === '' || (job?.minJdSalary === parseInt(Salary?.salary))) &&
+            (CompanyName === '' || job?.companyName.toLowerCase().includes(CompanyName?.companyName.toLowerCase()))
         );
     });
 
-
-    console.log(filteredJobData, "filter job data");
 
     return (
         <div className="page_wrapper">
@@ -62,18 +59,20 @@ const Home = () => {
                     <Header />
                     <Filters
                         ByRole={setRoles}
-                        ByEmployee={setEmployees}
                         ByExp={setExperience}
-                        ByRemote={setRemote}
+                        ByLocation={setLocation}
                         BySalary={setSalary}
                         ByCompany={setCompanyName}
                     />
                     <InfiniteScroll fetchMoreData={fetchMoreData}>
                         <div className='grid'>
-                            {jobData.map((job, index) => (
+                            {filteredJobData.map((job, index) => (
                                 <JobCard job={job} key={index} />
                             ))}
                         </div>
+                        {loading && <div className='loading'>
+                            <LoadingSpin />
+                        </div>}
                     </InfiniteScroll>
                 </div>
             </div>

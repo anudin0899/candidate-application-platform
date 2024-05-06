@@ -4,7 +4,9 @@ export const Role = [
         options: [
             { value: "frontend", label: "frontend" },
             { value: "backend", label: "backend" },
-            { value: "Full Stack", label: "Full Stack" },
+            { value: "ios", label: "ios" },
+            { value: "android", label: "android" },
+            { value: "full stack", label: "full stack" },
             { value: "Devops", label: "Devops" },
         ]
     },
@@ -16,17 +18,13 @@ export const Role = [
     },
 ];
 
-export const Employees = [
-    { value: "1-10", label: "1-10" },
-    { value: "11-20", label: "11-20" },
-    { value: "21-30", label: "21-30" },
-    { value: "31-40", label: "31-40" },
-];
-
-export const Remote = [
-    { value: "remote", label: "remote" },
-    { value: "hybrid", label: "hybrid" },
-    { value: "from office", label: "from office" }
+export const Location = [
+    { value: "chennai", label: "chennai" },
+    { value: "mumbai", label: "mumbai" },
+    { value: "bangole", label: "bangole" },
+    { value: "delhi", label: "delhi" },
+    { value: "kochi", label: "kochi" },
+    { value: "gujarat", label: "gujarat" },
 ];
 
 export const Salary = [

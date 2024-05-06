@@ -2,8 +2,8 @@ export const Role = [
     {
         label: 'Engineering',
         options: [
-            { value: "Frontend", label: "Frontend" },
-            { value: "Backend", label: "Backend" },
+            { value: "frontend", label: "frontend" },
+            { value: "backend", label: "backend" },
             { value: "Full Stack", label: "Full Stack" },
             { value: "Devops", label: "Devops" },
         ]

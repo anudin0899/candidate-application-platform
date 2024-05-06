@@ -1,25 +1,29 @@
-.container {
+.containers {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   padding: 20px;
 }
-.container .fiter-wrap {
+.containers .titles {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.containers .filter_wraps {
   width: 100%;
   display: flex;
   gap: 10px;
   margin-top: 25px;
 }
-.container .fiter-wrap .filters {
+.containers .filter_wraps .filter {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
-.container .fiter-wrap .filters input {
+.containers .filter_wraps .filter input {
   padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 6px;
+  font-size: 14px;
   outline: none;
-}/*# sourceMappingURL=Filter.css.map */
+}/*# sourceMappingURL=Filters.css.map */
